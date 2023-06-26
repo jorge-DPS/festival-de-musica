@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock & EDM Festival</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+    <!-- SASS -->
+    <link rel="stylesheet" href="build/css/app.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="contenedor contenido-header">
+            <h1>Rock & EDM Festival</h1>
+
+            <nav class="navegacion-principal">
+                <a href="#">Line Up</a>
+                <a href="#">Galeria</a>
+                <a href="#">Boletos</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="video">
+        <div class="overlay">
+            <div class="contenedor contenido-video">
+                <h2>Rock & EDM Festival</h2>
+                <p>Julio 2023 Bolivia, La Paz</p>
+            </div>
+        </div>
+        <video autoplay muted loop>
+            <!-- si o si poner estos formatos -->
+            <source src="video/concierto.mp4" type="video/mp4">
+            <source src="video/concierto.ogg" type="video/ogg">
+            <source src="video/concierto.webm" type="video/webm">
+        </video>
+    </div>
+
+    <section class="contenedor sobre-festival">
+        <div class="imagen">
+            <picture>
+                <source srcset="build/img/imagen_vocalista.webp" type="image/webp">
+                <source srcset="build/img/imagen_vocalista.avif" type="image/avif">
+                <!-- <source srcset="build/img/imagen_vocalista.webp" type="image/webp"> -->
+                <!-- <img src="build/img/imagen_vocalista.jpg" alt="imagen vocalista"> -->
+            </picture>
+        </div>
+        <div class="contenido-festival">
+            <h2>Rock & EDM Festival</h2>
+            <p class="fecha">Junio 2023, La Paz, Bolivia</p>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae ex ipsa corrupti culpa hic enim labore
+                itaque sint. Aliquam dolorem saepe et voluptatibus doloremque earum quisquam recusandae unde natus
+                minus?
+            </p>
+        </div>
+    </section>
+
+
+</body>
+
+</html>

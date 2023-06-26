@@ -1,0 +1,48 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.header {
+    background-color: v.$verde;
+
+    h1 {
+        color: v.$blanco;
+        text-align: center;
+        @include m.tablet {
+            margin: 0;
+        }
+    }
+
+    .contenido-header {
+        padding: 2rem;
+        @include m.tablet {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+}
+
+.navegacion-principal {
+    // en app.css los media querys que escribimos en scss para que vaya despues de la clase un media lo que se hace es primero la clase y despues el media 
+    // esto para que el media query en el app.css se comode despues de la clase o selector que estamos mencionando en el scss
+    // todo lo que escriba aqui se reemplaza en content
+    @include m.tablet {
+        display: flex;
+        gap: 2rem;
+    }
+    a {
+        display: block;
+        text-align: center;
+        color: v.$blanco;
+        font-size: 2.4rem;
+        margin-bottom: 1rem;
+        @include m.tablet {
+            margin: 0;
+        }
+
+        // aqui el "&" es para quitar el espacio, en este caso es para hover en las anclas
+        &:hover {
+            color: v.$amarillo;
+        }
+    }
+}

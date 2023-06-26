@@ -1,0 +1,47 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.video {
+    position: relative;
+    max-height: 70rem; //aquie le estamos dicientdo la altura masxima sera de 700 px
+    min-height: 50rem;
+    overflow: hidden; // lo que hara sera cortar hasta donde tenga la altura definida
+
+    .overlay {
+        position: absolute;
+        background: rgb(165, 3, 255);
+        background: linear-gradient(263deg, rgba(165, 3, 255, 0.5) 0%, rgba(255, 0, 110, 0.3029586834733894) 100%);
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center; // aqui alinea el contenido de .ob¿verlay; verticalmente
+    }
+
+    video {
+        width: auto;
+        display: block;
+        @include m.desktop {
+            width: 100%; // tome el 100% de la pantalla
+        }
+    }
+}
+
+.contenido-video {
+    z-index: 1;
+    h2 {
+        color: v.$blanco;
+        font-size: 7rem;
+        margin: 0;
+    }
+
+    p {
+        background-color: v.$rosa;
+        display: inline-block; // toma el espácion que requiere, y si hay mas elementos por debajo no los pone a la derecha o en frente de el 
+        padding: 1rem 2rem;
+        color: v.$blanco;
+        font-weight: 700;
+        font-size: 2.4rem;
+        margin: 0;
+    }
+}

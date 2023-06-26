@@ -1,0 +1,4 @@
+//@forward; indica o apunta a los archivos en este caso variables
+@forward 'variables'; // siempre en este orden 
+@forward 'normalize'; // para reseatear todo
+@forward 'globales'; // una vez reseteado agregamos los globales
