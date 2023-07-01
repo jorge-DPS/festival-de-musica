@@ -3,6 +3,16 @@
 
 .header {
     background-color: v.$verde;
+    @include m.tablet {
+        &.fijo {
+            left: 0;
+            top: 0;
+            position: fixed;
+            width: 100%;
+            box-shadow: .1rem .2rem .3rem #333;
+        }
+    }
+    
 
     h1 {
         color: v.$blanco;
@@ -11,6 +21,7 @@
             margin: 0;
         }
     }
+    
 
     .contenido-header {
         padding: 2rem;
@@ -22,6 +33,11 @@
     }
 }
 
+/* .fijo {
+    position: fixed;
+    width: 100%;
+}
+ */
 .navegacion-principal {
     // en app.css los media querys que escribimos en scss para que vaya despues de la clase un media lo que se hace es primero la clase y despues el media 
     // esto para que el media query en el app.css se comode despues de la clase o selector que estamos mencionando en el scss

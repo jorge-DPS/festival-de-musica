@@ -11,18 +11,28 @@ const { src, dest, watch, parallel } = require("gulp"); // src sirve para identi
 
 // CSS
 const sass = require("gulp-sass")(require('sass'));
-const plumber = require('gulp-plumber')
+const plumber = require('gulp-plumber');
+const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
+const postcss = require('gulp-postcss');
+const sourcemaps = require('gulp-sourcemaps');
 
 // Imagenes
 const cache = require('gulp-cache');
 const imagemin = require('gulp-imagemin');
 const webp = require('gulp-webp');
-const avif = require('gulp-avif')
+const avif = require('gulp-avif');
+
+// JavaScript 
+const terser = require('gulp-terser-js');
 
 function css(done) {
     src('src/scss/**/*.scss')// Identificar el archivo SASS; **/*.scss -> busca de forma recursiva todas los archivos .scss
+        .pipe(sourcemaps.init())
         .pipe(plumber()) // para no detener la consola cuando tenemos un error
         .pipe(sass()) // Compilarse
+        .pipe(postcss([ autoprefixer(), cssnano() ]) )
+        .pipe(sourcemaps.write('.'))
         .pipe(dest('build/css'));// Almacenarla en el disco duro
 
     done(); // Callback que avisa a gulp cuando llegamos al final
@@ -64,14 +74,28 @@ function versionAvif(done) {
     done()
 }
 
+// Para javaScript
+
+function javaScript(done) {
+    src('src/js/**/*.js')
+    .pipe(sourcemaps.init())
+    .pipe( terser() )
+    .pipe(sourcemaps.write('.'))
+    .pipe(dest('build/js'))
+
+    done();
+}
+
 function dev(done) {
     watch('src/scss/**/*.scss', css) // aqui esta la ruta, la funcion que es css
+    watch('src/js/**/*.js', javaScript)
     done();
 } // en esta funcion estara a la escucha en app.scss que son los estilos 
 // y para ejecutarlo usamos nopm run dev
 
 exports.css = css;
+exports.js = javaScript;
 exports.imagenes = imagenes;
 exports.versionWebp = versionWebp;
 exports.versionAvif = versionAvif;
-exports.dev = parallel(imagenes, versionWebp, versionAvif, dev); // para que corra las tareas en paralelo
+exports.dev = parallel(css, imagenes, versionWebp, versionAvif, javaScript, dev); // para que corra las tareas en paralelo

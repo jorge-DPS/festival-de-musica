@@ -14,6 +14,14 @@ html {
 body {
     font-family: v.$fuentePrincipal;
     font-size:  1.6rem;
+    
+    &.fijar-body {
+        overflow: hidden;
+    }
+
+    &.no-scroll-body {
+        padding-top: 8.6rem;
+    }
 }
 
 p {
